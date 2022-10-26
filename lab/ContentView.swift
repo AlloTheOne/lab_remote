@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isOn = false
+    @State var isOn1 = true
+    @State var isOn2 = false
+
+    @State var step = 0
     var body: some View {
-        Text("Hello, world!!!")
+        VStack {
+            Text("Coffee ☕️").font(.title)
+            
+            Toggle(isOn: $isOn){
+                    Text("Include Milk 🥛")}.padding()
+           
+            Toggle(isOn: $isOn1){
+                Text("Iced 🧊 ")}.padding()
+            
+            Toggle(isOn: $isOn2){
+                Text("spoon of sugar ")}.padding()
+            
+            Stepper(value: $step){
+                Text("Quantity : \(step)")
+            }.padding()
+            
+            Button("Order",action: excuteFunc)
+            
             .padding()
+        }
+    }
+    func excuteFunc(){
+        print("Coffee Done")
     }
 }
 
